@@ -1,22 +1,22 @@
 # AGENTS.md
 
-## About Spec Kit and Specify
+## About Spec Writing Kit and its CLI
 
-**GitHub Spec Kit** is a comprehensive toolkit for implementing Spec-Driven Development (SDD) - a methodology that emphasizes creating clear specifications before implementation. The toolkit includes templates, scripts, and workflows that guide development teams through a structured approach to building software.
+**Spec Writing Kit** is a comprehensive toolkit for implementing Spec-Driven Writing (SDW) - a methodology that emphasizes creating clear specifications before starting to write. The toolkit includes templates, scripts, and workflows that guide writers through a structured approach to creating content.
 
-**Specify CLI** is the command-line interface that bootstraps projects with the Spec Kit framework. It sets up the necessary directory structures, templates, and AI agent integrations to support the Spec-Driven Development workflow.
+**The CLI** is the command-line interface that bootstraps projects with the Spec Writing Kit framework. It sets up the necessary directory structures, templates, and AI agent integrations to support the Spec-Driven Writing workflow.
 
-The toolkit supports multiple AI coding assistants, allowing teams to use their preferred tools while maintaining consistent project structure and development practices.
+The toolkit supports multiple AI coding assistants, allowing writers to use their preferred tools while maintaining consistent project structure and writing practices.
 
 ---
 
 ## General practices
 
-- Any changes to `__init__.py` for the Specify CLI require a version rev in `pyproject.toml` and addition of entries to `CHANGELOG.md`.
+- Any changes to `__init__.py` for The CLI require a version rev in `pyproject.toml` and addition of entries to `CHANGELOG.md`.
 
 ## Adding New Agent Support
 
-This section explains how to add support for new AI agents/assistants to the Specify CLI. Use this guide as a reference when integrating new AI tools into the Spec-Driven Development workflow.
+This section explains how to add support for new AI agents/assistants to The CLI. Use this guide as a reference when integrating new AI tools into the Spec-Driven Writing workflow.
 
 ### Overview
 
@@ -346,7 +346,7 @@ Command content with {SCRIPT} and $ARGUMENTS placeholders.
 ```markdown
 ---
 description: "Command description"
-mode: speckit.command-name
+mode: writekit.command-name
 ---
 
 Command content with {SCRIPT} and $ARGUMENTS placeholders.
@@ -403,7 +403,7 @@ Different agents use different argument placeholders:
 When adding new agents:
 
 - Consider the agent's native command/workflow patterns
-- Ensure compatibility with the Spec-Driven Development process
+- Ensure compatibility with the Spec-Driven Writing process
 - Document any special requirements or limitations
 - Update this guide with lessons learned
 - Verify the actual CLI tool name before adding to AGENT_CONFIG

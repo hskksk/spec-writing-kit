@@ -241,7 +241,7 @@ BANNER = """
 ╚══════╝╚═╝     ╚══════╝ ╚═════╝╚═╝╚═╝        ╚═╝   
 """
 
-TAGLINE = "GitHub Spec Kit - Spec-Driven Development Toolkit"
+TAGLINE = "Spec Writing Kit - Spec-Driven Writing Toolkit"
 class StepTracker:
     """Track and render hierarchical steps without emojis, similar to Claude Code tree output.
     Supports live auto-refresh via an attached refresh callback.
@@ -435,7 +435,7 @@ class BannerGroup(TyperGroup):
 
 app = typer.Typer(
     name="specify",
-    help="Setup tool for Specify spec-driven development projects",
+    help="Setup tool for Spec Writing Kit projects",
     add_completion=False,
     invoke_without_command=True,
     cls=BannerGroup,
@@ -956,7 +956,7 @@ def init(
     github_token: str = typer.Option(None, "--github-token", help="GitHub token to use for API requests (or set GH_TOKEN or GITHUB_TOKEN environment variable)"),
 ):
     """
-    Initialize a new Specify project from the latest template.
+    Initialize a new Spec Writing Kit project from the latest template.
     
     This command will:
     1. Check that required tools are installed (git is optional)
@@ -1026,7 +1026,7 @@ def init(
     current_dir = Path.cwd()
 
     setup_lines = [
-        "[cyan]Specify Project Setup[/cyan]",
+        "[cyan]Spec Writing Kit Project Setup[/cyan]",
         "",
         f"{'Project':<15} [green]{project_path.name}[/green]",
         f"{'Working Path':<15} [dim]{current_dir}[/dim]",
@@ -1091,7 +1091,7 @@ def init(
     console.print(f"[cyan]Selected AI assistant:[/cyan] {selected_ai}")
     console.print(f"[cyan]Selected script type:[/cyan] {selected_script}")
 
-    tracker = StepTracker("Initialize Specify Project")
+    tracker = StepTracker("Initialize Spec Writing Kit Project")
 
     sys._specify_tracker_active = True
 
@@ -1219,26 +1219,16 @@ def init(
 
     steps_lines.append(f"{step_num}. Start using slash commands with your AI agent:")
 
-    steps_lines.append("   2.1 [cyan]/speckit.constitution[/] - Establish project principles")
-    steps_lines.append("   2.2 [cyan]/speckit.specify[/] - Create baseline specification")
-    steps_lines.append("   2.3 [cyan]/speckit.plan[/] - Create implementation plan")
-    steps_lines.append("   2.4 [cyan]/speckit.tasks[/] - Generate actionable tasks")
-    steps_lines.append("   2.5 [cyan]/speckit.implement[/] - Execute implementation")
+    steps_lines.append("   2.1 [cyan]/writekit.constitution[/] - Establish the writing constitution")
+    steps_lines.append("   2.2 [cyan]/writekit.specify[/] - Create the writing specification")
+    steps_lines.append("   2.3 [cyan]/writekit.plan[/] - Create the writing plan")
+    steps_lines.append("   2.4 [cyan]/writekit.research[/] - Conduct research")
+    steps_lines.append("   2.5 [cyan]/writekit.tasks[/] - Break down into writing tasks")
+    steps_lines.append("   2.6 [cyan]/writekit.write[/] - Execute the writing process")
 
     steps_panel = Panel("\n".join(steps_lines), title="Next Steps", border_style="cyan", padding=(1,2))
     console.print()
     console.print(steps_panel)
-
-    enhancement_lines = [
-        "Optional commands that you can use for your specs [bright_black](improve quality & confidence)[/bright_black]",
-        "",
-        f"○ [cyan]/speckit.clarify[/] [bright_black](optional)[/bright_black] - Ask structured questions to de-risk ambiguous areas before planning (run before [cyan]/speckit.plan[/] if used)",
-        f"○ [cyan]/speckit.analyze[/] [bright_black](optional)[/bright_black] - Cross-artifact consistency & alignment report (after [cyan]/speckit.tasks[/], before [cyan]/speckit.implement[/])",
-        f"○ [cyan]/speckit.checklist[/] [bright_black](optional)[/bright_black] - Generate quality checklists to validate requirements completeness, clarity, and consistency (after [cyan]/speckit.plan[/])"
-    ]
-    enhancements_panel = Panel("\n".join(enhancement_lines), title="Enhancement Commands", border_style="cyan", padding=(1,2))
-    console.print()
-    console.print(enhancements_panel)
 
 @app.command()
 def check():
@@ -1293,7 +1283,7 @@ def version():
     # Get CLI version from package metadata
     cli_version = "unknown"
     try:
-        cli_version = importlib.metadata.version("specify-cli")
+        cli_version = importlib.metadata.version("spec-writing-kit-cli")
     except Exception:
         # Fallback: try reading from pyproject.toml if running from source
         try:
