@@ -1,104 +1,68 @@
-# Implementation Plan: [FEATURE]
+# Writing Plan: [CONTENT_THEME]
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+## 1. Overview
 
-**Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
+This document outlines the detailed plan for writing the content piece "[CONTENT_THEME]", based on its specification. It covers the structure, style, and media elements.
 
-## Summary
+## 2. Content Structure
 
-[Extract from feature spec: primary requirement + technical approach from research]
+### Main Sections
+[CONTENT_STRUCTURE] (e.g.,
+-   **Introduction**: (500 words) Hook, thesis statement.
+-   **Chapter 1: Foundations**: (1500 words) Key concepts, definitions.
+    -   Subsection 1.1: Historical Context (500 words)
+    -   Subsection 1.2: Core Principles (1000 words)
+-   **Chapter 2: Application**: (2000 words) Practical examples, use cases.
+    -   Subsection 2.1: Case Study A (1000 words)
+    -   Subsection 2.2: Case Study B (1000 words)
+-   **Conclusion**: (500 words) Summary, future outlook, call to action.
+]
 
-## Technical Context
+## 3. Section Roles and Allocation
 
-<!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
--->
+| Section         | Role                                      | Estimated Length | Key Points to Cover                                              |
+|-----------------|-------------------------------------------|------------------|------------------------------------------------------------------|
+| Introduction    | Grab attention, set context               | [LENGTH]         | [KEY_POINTS]                                                     |
+| [Section Name]  | [ROLE]                                    | [LENGTH]         | [KEY_POINTS]                                                     |
+| ...             | ...                                       | ...              | ...                                                              |
+| Conclusion      | Summarize, provide final thoughts         | [LENGTH]         | [KEY_POINTS]                                                     |
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+## 4. Expression Techniques
 
-## Constitution Check
+[EXPRESSION_TECHNIQUES] (e.g.,
+-   Use analogies to explain complex concepts.
+-   Incorporate storytelling elements in case studies.
+-   Employ a persuasive tone when discussing benefits.
+-   Use bullet points for readability.
+]
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+## 5. Media Elements Plan
 
-[Gates determined based on constitution file]
+| Element Type     | Description                               | Placement         | Purpose                                     |
+|------------------|-------------------------------------------|-------------------|---------------------------------------------|
+| Image/Diagram    | [DESCRIPTION]                             | [SECTION/CONTEXT] | [PURPOSE]                                   |
+| Code Snippet     | [DESCRIPTION]                             | [SECTION/CONTEXT] | [PURPOSE]                                   |
+| Video Link       | [DESCRIPTION]                             | [SECTION/CONTEXT] | [PURPOSE]                                   |
 
-## Project Structure
+## 6. Reference Source Strategy
 
-### Documentation (this feature)
+[REFERENCE_SOURCES] (e.g.,
+-   Primary research papers for scientific claims.
+-   Industry reports for market data.
+-   Established textbooks for foundational knowledge.
+-   Personal interviews for expert opinions.
+]
 
-```text
-specs/[###-feature]/
-├── plan.md              # This file (/speckit.plan command output)
-├── research.md          # Phase 0 output (/speckit.plan command)
-├── data-model.md        # Phase 1 output (/speckit.plan command)
-├── quickstart.md        # Phase 1 output (/speckit.plan command)
-├── contracts/           # Phase 1 output (/speckit.plan command)
-└── tasks.md             # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan)
-```
+## 7. Output Format Optimization
 
-### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
+Considerations for [OUTPUT_FORMAT_OPTIMIZATION] (e.g.,
+-   SEO optimization for blog posts (keywords, meta descriptions).
+-   Chapter consistency for books (cross-references, index terms).
+-   Readability for technical documentation (glossary, clear headings).
+]
 
-```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
-src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+---
 
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
-```
-
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
-
-## Complexity Tracking
-
-> **Fill ONLY if Constitution Check has violations that must be justified**
-
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+**Generated by Spec Writing Kit CLI**
+**Version**: [PLAN_VERSION]
+**Date**: [GENERATION_DATE]
