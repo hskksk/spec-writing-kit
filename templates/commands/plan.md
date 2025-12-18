@@ -1,19 +1,9 @@
 ---
-description: Execute the implementation planning workflow using the plan template to generate design artifacts.
-handoffs: 
-  - label: Create Tasks
-    agent: speckit.tasks
-    prompt: Break the plan into tasks
-    send: true
-  - label: Create Checklist
-    agent: speckit.checklist
-    prompt: Create a checklist for the following domain...
-scripts:
-  sh: scripts/bash/setup-plan.sh --json
-  ps: scripts/powershell/setup-plan.ps1 -Json
-agent_scripts:
-  sh: scripts/bash/update-agent-context.sh __AGENT__
-  ps: scripts/powershell/update-agent-context.ps1 -AgentType __AGENT__
+description: Design how to write the content, including its structure, expression techniques, and media elements.
+handoffs:
+  - label: Conduct Research
+    agent: writekit.research
+    prompt: Conduct research based on the writing plan, focusing on gathering supporting evidence for key arguments.
 ---
 
 ## User Input
@@ -26,70 +16,97 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
-1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for FEATURE_SPEC, IMPL_PLAN, SPECS_DIR, BRANCH. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
+You are creating a detailed writing plan for a new content piece at `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/plan.md`. This plan will outline the content's structure, section details, expression techniques, and planned media elements, building upon the writing specification.
 
-2. **Load context**: Read FEATURE_SPEC and `/memory/constitution.md`. Load IMPL_PLAN template (already copied).
+Follow this execution flow:
 
-3. **Execute plan workflow**: Follow the structure in IMPL_PLAN template to:
-   - Fill Technical Context (mark unknowns as "NEEDS CLARIFICATION")
-   - Fill Constitution Check section from constitution
-   - Evaluate gates (ERROR if violations unjustified)
-   - Phase 0: Generate research.md (resolve all NEEDS CLARIFICATION)
-   - Phase 1: Generate data-model.md, contracts/, quickstart.md
-   - Phase 1: Update agent context by running the agent script
-   - Re-evaluate Constitution Check post-design
+1.  **Load Writing Specification**: Load the existing writing specification from `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/spec.md`. Understand the theme, purpose, audience, and key arguments.
+2.  **Extract Core Elements from User Input**: Identify any specific instructions or preferences provided in $ARGUMENTS for the content structure, style, or media.
+3.  **Draft the Plan Content**: Based on the writing specification and user input, generate the detailed plan.
+    *   `[CONTENT_STRUCTURE]`: Define the hierarchical structure (e.g., introduction, main sections with headings, conclusion).
+    *   `[SECTION_ROLES_AND_ALLOCATION]`: Assign a purpose and estimated word count/length to each section.
+    *   `[EXPRESSION_TECHNIQUES]`: Suggest rhetorical devices, examples, analogies, or storytelling approaches.
+    *   `[REFERENCE_SOURCES]`: Propose types of information sources to be used (e.g., academic papers, industry reports, personal anecdotes).
+    *   `[OUTPUT_FORMAT_OPTIMIZATION]`: Tailor the plan for the specified output format (e.g., SEO for blog, chapter flow for book).
+    *   `[MEDIA_ELEMENTS_PLAN]`: Outline where images, diagrams, code snippets, or video links will be placed and their purpose.
 
-4. **Stop and report**: Command ends after Phase 2 planning. Report branch, IMPL_PLAN path, and generated artifacts.
+4.  **Validate against Writing Constitution and Specification**:
+    *   Ensure the plan adheres to the principles in `/memory/constitution.md`.
+    *   Confirm that the plan fully addresses all requirements in `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/spec.md`.
 
-## Phases
+5.  **Output**: Write the completed plan to `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/plan.md`.
 
-### Phase 0: Outline & Research
+## Output Format:
 
-1. **Extract unknowns from Technical Context** above:
-   - For each NEEDS CLARIFICATION → research task
-   - For each dependency → best practices task
-   - For each integration → patterns task
+Please use the following Markdown structure for the `plan.md` file. Replace all bracketed placeholders `[ALL_CAPS]` with concrete information.
 
-2. **Generate and dispatch research agents**:
+```markdown
+# Writing Plan: [CONTENT_THEME]
 
-   ```text
-   For each unknown in Technical Context:
-     Task: "Research {unknown} for {feature context}"
-   For each technology choice:
-     Task: "Find best practices for {tech} in {domain}"
-   ```
+## 1. Overview
 
-3. **Consolidate findings** in `research.md` using format:
-   - Decision: [what was chosen]
-   - Rationale: [why chosen]
-   - Alternatives considered: [what else evaluated]
+This document outlines the detailed plan for writing the content piece "[CONTENT_THEME]", based on its specification. It covers the structure, style, and media elements.
 
-**Output**: research.md with all NEEDS CLARIFICATION resolved
+## 2. Content Structure
 
-### Phase 1: Design & Contracts
+### Main Sections
+[CONTENT_STRUCTURE] (e.g.,
+-   **Introduction**: (500 words) Hook, thesis statement.
+-   **Chapter 1: Foundations**: (1500 words) Key concepts, definitions.
+    -   Subsection 1.1: Historical Context (500 words)
+    -   Subsection 1.2: Core Principles (1000 words)
+-   **Chapter 2: Application**: (2000 words) Practical examples, use cases.
+    -   Subsection 2.1: Case Study A (1000 words)
+    -   Subsection 2.2: Case Study B (1000 words)
+-   **Conclusion**: (500 words) Summary, future outlook, call to action.
+]
 
-**Prerequisites:** `research.md` complete
+## 3. Section Roles and Allocation
 
-1. **Extract entities from feature spec** → `data-model.md`:
-   - Entity name, fields, relationships
-   - Validation rules from requirements
-   - State transitions if applicable
+| Section         | Role                                      | Estimated Length | Key Points to Cover                                              |
+|-----------------|-------------------------------------------|------------------|------------------------------------------------------------------|
+| Introduction    | Grab attention, set context               | [LENGTH]         | [KEY_POINTS]                                                     |
+| [Section Name]  | [ROLE]                                    | [LENGTH]         | [KEY_POINTS]                                                     |
+| ...             | ...                                       | ...              | ...                                                              |
+| Conclusion      | Summarize, provide final thoughts         | [LENGTH]         | [KEY_POINTS]                                                     |
 
-2. **Generate API contracts** from functional requirements:
-   - For each user action → endpoint
-   - Use standard REST/GraphQL patterns
-   - Output OpenAPI/GraphQL schema to `/contracts/`
+## 4. Expression Techniques
 
-3. **Agent context update**:
-   - Run `{AGENT_SCRIPT}`
-   - These scripts detect which AI agent is in use
-   - Update the appropriate agent-specific context file
-   - Add only new technology from current plan
-   - Preserve manual additions between markers
+[EXPRESSION_TECHNIQUES] (e.g.,
+-   Use analogies to explain complex concepts.
+-   Incorporate storytelling elements in case studies.
+-   Employ a persuasive tone when discussing benefits.
+-   Use bullet points for readability.
+]
 
-**Output**: data-model.md, /contracts/*, quickstart.md, agent-specific file
+## 5. Media Elements Plan
 
-## Key rules
+| Element Type     | Description                               | Placement         | Purpose                                     |
+|------------------|-------------------------------------------|-------------------|---------------------------------------------|
+| Image/Diagram    | [DESCRIPTION]                             | [SECTION/CONTEXT] | [PURPOSE]                                   |
+| Code Snippet     | [DESCRIPTION]                             | [SECTION/CONTEXT] | [PURPOSE]                                   |
+| Video Link       | [DESCRIPTION]                             | [SECTION/CONTEXT] | [PURPOSE]                                   |
 
-- Use absolute paths
-- ERROR on gate failures or unresolved clarifications
+## 6. Reference Source Strategy
+
+[REFERENCE_SOURCES] (e.g.,
+-   Primary research papers for scientific claims.
+-   Industry reports for market data.
+-   Established textbooks for foundational knowledge.
+-   Personal interviews for expert opinions.
+]
+
+## 7. Output Format Optimization
+
+Considerations for [OUTPUT_FORMAT_OPTIMIZATION] (e.g.,
+-   SEO optimization for blog posts (keywords, meta descriptions).
+-   Chapter consistency for books (cross-references, index terms).
+-   Readability for technical documentation (glossary, clear headings).
+]
+
+---
+
+**Generated by Spec Writing Kit CLI**
+**Version**: [PLAN_VERSION]
+**Date**: [GENERATION_DATE]
+```
