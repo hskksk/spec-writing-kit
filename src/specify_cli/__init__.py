@@ -10,18 +10,18 @@
 # ]
 # ///
 """
-Specify CLI - Setup tool for Specify projects
+Writekit CLI - Setup tool for Spec Writing Kit projects
 
 Usage:
-    uvx specify-cli.py init <project-name>
-    uvx specify-cli.py init .
-    uvx specify-cli.py init --here
+    uvx writekit-cli.py init <project-name>
+    uvx writekit-cli.py init .
+    uvx writekit-cli.py init --here
 
 Or install globally:
-    uv tool install --from specify-cli.py specify-cli
-    specify init <project-name>
-    specify init .
-    specify init --here
+    uv tool install --from writekit-cli.py writekit-cli
+    writekit init <project-name>
+    writekit init .
+    writekit init --here
 """
 
 import os
@@ -434,7 +434,7 @@ class BannerGroup(TyperGroup):
 
 
 app = typer.Typer(
-    name="specify",
+    name="writekit",
     help="Setup tool for Spec Writing Kit projects",
     add_completion=False,
     invoke_without_command=True,
@@ -460,7 +460,7 @@ def callback(ctx: typer.Context):
     """Show banner when no subcommand is provided."""
     if ctx.invoked_subcommand is None and "--help" not in sys.argv and "-h" not in sys.argv:
         show_banner()
-        console.print(Align.center("[dim]Run 'specify --help' for usage information[/dim]"))
+        console.print(Align.center("[dim]Run 'writekit --help' for usage information[/dim]"))
         console.print()
 
 def run_command(cmd: list[str], check_return: bool = True, capture: bool = False, shell: bool = False) -> Optional[str]:
@@ -967,17 +967,17 @@ def init(
     6. Optionally set up AI assistant commands
     
     Examples:
-        specify init my-project
-        specify init my-project --ai claude
-        specify init my-project --ai copilot --no-git
-        specify init --ignore-agent-tools my-project
-        specify init . --ai claude         # Initialize in current directory
-        specify init .                     # Initialize in current directory (interactive AI selection)
-        specify init --here --ai claude    # Alternative syntax for current directory
-        specify init --here --ai codex
-        specify init --here --ai codebuddy
-        specify init --here
-        specify init --here --force  # Skip confirmation when current directory not empty
+        writekit init my-project
+        writekit init my-project --ai claude
+        writekit init my-project --ai copilot --no-git
+        writekit init --ignore-agent-tools my-project
+        writekit init . --ai claude         # Initialize in current directory
+        writekit init .                     # Initialize in current directory (interactive AI selection)
+        writekit init --here --ai claude    # Alternative syntax for current directory
+        writekit init --here --ai codex
+        writekit init --here --ai codebuddy
+        writekit init --here
+        writekit init --here --force  # Skip confirmation when current directory not empty
     """
 
     show_banner()
@@ -1264,7 +1264,7 @@ def check():
 
     console.print(tracker.render())
 
-    console.print("\n[bold green]Specify CLI is ready to use![/bold green]")
+    console.print("\n[bold green]Writekit CLI is ready to use![/bold green]")
 
     if not git_ok:
         console.print("[dim]Tip: Install git for repository management[/dim]")
@@ -1343,7 +1343,7 @@ def version():
 
     panel = Panel(
         info_table,
-        title="[bold cyan]Specify CLI Information[/bold cyan]",
+        title="[bold cyan]Writekit CLI Information[/bold cyan]",
         border_style="cyan",
         padding=(1, 2)
     )
