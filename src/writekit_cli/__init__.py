@@ -726,8 +726,8 @@ def download_template_from_github(
     debug: bool = False,
     github_token: str = None,
 ) -> Tuple[Path, dict]:
-    repo_owner = "github"
-    repo_name = "spec-kit"
+    repo_owner = "hskksk"
+    repo_name = "spec-writing-kit"
     if client is None:
         client = httpx.Client(verify=ssl_context)
 
@@ -761,7 +761,7 @@ def download_template_from_github(
         raise typer.Exit(1)
 
     assets = release_data.get("assets", [])
-    pattern = f"spec-kit-template-{ai_assistant}-{script_type}"
+    pattern = f"spec-writing-kit-template-{ai_assistant}-{script_type}"
     matching_assets = [
         asset
         for asset in assets
@@ -1550,8 +1550,8 @@ def version():
             pass
 
     # Fetch latest template release version
-    repo_owner = "github"
-    repo_name = "spec-kit"
+    repo_owner = "hskksk"
+    repo_name = "spec-writing-kit"
     api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/releases/latest"
 
     template_version = "unknown"

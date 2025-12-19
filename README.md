@@ -12,7 +12,7 @@
     <a href="https://github.com/hskksk/spec-writing-kit/actions/workflows/release.yml"><img src="https://github.com/hskksk/spec-writing-kit/actions/workflows/release.yml/badge.svg" alt="Release"/></a>
     <a href="https://github.com/hskksk/spec-writing-kit/stargazers"><img src="https://img.shields.io/github/stars/hskksk/spec-writing-kit?style=social" alt="GitHub stars"/></a>
     <a href="https://github.com/hskksk/spec-writing-kit/blob/main/LICENSE"><img src="https://img.shields.io/github/license/hskksk/spec-writing-kit" alt="License"/></a>
-    <a href="https://github.github.io/spec-kit/"><img src="https://img.shields.io/badge/docs-GitHub_Pages-blue" alt="Documentation"/></a>
+    <a href="https://hskksk.github.io/spec-writing-kit/"><img src="https://img.shields.io/badge/docs-GitHub_Pages-blue" alt="Documentation"/></a>
 </p>
 
 ---
@@ -202,4 +202,3 @@ This project is a fork of and heavily influenced by the work and research of [Jo
 ## 📄 License
 
 This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) file for the full terms.
-

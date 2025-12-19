@@ -8,7 +8,7 @@ This guide shows how to iterate on the `writekit` CLI locally without publishing
 
 ```bash
 git clone https://github.com/hskksk/spec-writing-kit.git
-cd spec-kit
+cd spec-writing-kit
 # Work on a feature branch
 git checkout -b your-feature-branch
 ```
@@ -68,21 +68,21 @@ uvx --from git+https://github.com/hskksk/spec-writing-kit.git@your-feature-branc
 If you're in another directory, use an absolute path instead of `.`:
 
 ```bash
-uvx --from /mnt/c/GitHub/spec-kit writekit --help
-uvx --from /mnt/c/GitHub/spec-kit writekit init demo-anywhere --ai copilot --ignore-agent-tools --script sh
+uvx --from /mnt/c/GitHub/spec-writing-kit writekit --help
+uvx --from /mnt/c/GitHub/spec-writing-kit writekit init demo-anywhere --ai copilot --ignore-agent-tools --script sh
 ```
 
 Set an environment variable for convenience:
 
 ```bash
-export SPEC_KIT_SRC=/mnt/c/GitHub/spec-kit
+export SPEC_KIT_SRC=/mnt/c/GitHub/spec-writing-kit
 uvx --from "$SPEC_KIT_SRC" writekit init demo-env --ai copilot --ignore-agent-tools --script ps
 ```
 
 (Optional) Define a shell function:
 
 ```bash
-writekit-dev() { uvx --from /mnt/c/GitHub/spec-kit writekit "$@"; }
+writekit-dev() { uvx --from /mnt/c/GitHub/spec-writing-kit writekit "$@"; }
 # Then
 writekit-dev --help
 ```
@@ -146,7 +146,7 @@ writekit init demo --skip-tls --ai gemini --ignore-agent-tools --script ps
 | Run CLI directly | `python -m src.writekit_cli --help` |
 | Editable install | `uv pip install -e .` then `writekit ...` |
 | Local uvx run (repo root) | `uvx --from . writekit ...` |
-| Local uvx run (abs path) | `uvx --from /mnt/c/GitHub/spec-kit writekit ...` |
+| Local uvx run (abs path) | `uvx --from /mnt/c/GitHub/spec-writing-kit writekit ...` |
 | Git branch uvx | `uvx --from git+URL@branch writekit ...` |
 | Build wheel | `uv build` |
 
