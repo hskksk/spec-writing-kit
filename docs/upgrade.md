@@ -16,7 +16,7 @@
 
 ## Part 1: Upgrade the CLI Tool
 
-The CLI tool (`specify`) is separate from your project files. Upgrade it to get the latest features and bug fixes.
+The CLI tool (`writekit`) is separate from your project files. Upgrade it to get the latest features and bug fixes.
 
 ### If you installed with `uv tool install`
 
@@ -374,7 +374,7 @@ uv tool list
 # Should show writekit-cli
 
 # Verify path
-which specify
+which writekit
 
 # Should point to the uv tool installation directory
 ```
@@ -392,13 +392,13 @@ uv tool install writekit-cli --from git+https://github.com/github/spec-kit.git
 
 **Explanation:**
 
-The `specify` CLI tool is used for:
+The `writekit` CLI tool is used for:
 
 - **Initial setup:** `writekit init` to bootstrap Spec Kit in your project
 - **Upgrades:** `writekit init --here --force` to update templates and commands
 - **Diagnostics:** `writekit check` to verify tool installation
 
-Once you've run `writekit init`, the slash commands (like `/writekit.specify`, `/writekit.plan`, etc.) are **permanently installed** in your project's agent folder (`.claude/`, `.github/prompts/`, etc.). Your AI assistant reads these command files directly—no need to run `specify` again.
+Once you've run `writekit init`, the slash commands (like `/writekit.specify`, `/writekit.plan`, etc.) are **permanently installed** in your project's agent folder (`.claude/`, `.github/prompts/`, etc.). Your AI assistant reads these command files directly—no need to run `writekit` again.
 
 **If your agent isn't recognizing slash commands:**
 

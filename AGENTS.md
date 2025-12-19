@@ -57,7 +57,7 @@ Follow these steps to add a new agent (using a hypothetical new agent as an exam
 
 **IMPORTANT**: Use the actual CLI tool name as the key, not a shortened version.
 
-Add the new agent to the `AGENT_CONFIG` dictionary in `src/specify_cli/__init__.py`. This is the **single source of truth** for all agent metadata:
+Add the new agent to the `AGENT_CONFIG` dictionary in `src/writekit_cli/__init__.py`. This is the **single source of truth** for all agent metadata:
 
 ```python
 AGENT_CONFIG = {
@@ -384,7 +384,7 @@ Different agents use different argument placeholders:
 ## Testing New Agent Integration
 
 1. **Build test**: Run package creation script locally
-2. **CLI test**: Test `specify init --ai <agent>` command
+2. **CLI test**: Test `writekit init --ai <agent>` command
 3. **File generation**: Verify correct directory structure and files
 4. **Command validation**: Ensure generated commands work with the agent
 5. **Context update**: Test agent context update scripts

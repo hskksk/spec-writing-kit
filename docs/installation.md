@@ -67,8 +67,8 @@ uvx --from git+https://github.com/github/spec-kit.git writekit init <project_nam
 After initialization, you should see the following commands available in your AI agent:
 
 - `/writekit.specify` - Create specifications
-- `/speckit.plan` - Generate implementation plans  
-- `/speckit.tasks` - Break down into actionable tasks
+- `/writekit.plan` - Generate implementation plans
+- `/writekit.tasks` - Break down into actionable tasks
 
 The `.writekit/scripts` directory will contain both `.sh` and `.ps1` scripts.
 

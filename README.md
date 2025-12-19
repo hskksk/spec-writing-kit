@@ -43,17 +43,17 @@ Choose your preferred installation method:
 #### Option 1: Persistent Installation (Recommended)
 
 ```bash
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+uv tool install writekit-cli --from git+https://github.com/github/spec-kit.git
 ```
 *Note: The package name and source URL will be updated once this fork is established as its own project.*
 
 Then use the tool directly:
 ```bash
 # Create new project
-specify init <PROJECT_NAME>
+writekit init <PROJECT_NAME>
 
 # Or initialize in an existing directory
-specify init . --ai claude
+writekit init . --ai claude
 ```
 
 #### Option 2: One-time Usage
@@ -143,9 +143,9 @@ Use **`/writekit.write`** to execute the writing plan and generate the final con
 
 ## 🔧 CLI Reference
 
-The `specify` command supports the following options.
+The `writekit` command supports the following options.
 
-### `specify` Commands
+### `writekit` Commands
 
 | Command | Description                                      |
 | ------- | ------------------------------------------------ |
@@ -154,7 +154,7 @@ The `specify` command supports the following options.
 
 ### Available Slash Commands
 
-After running `specify init`, your AI agent will have access to these slash commands for structured writing:
+After running `writekit init`, your AI agent will have access to these slash commands for structured writing:
 
 | Command                  | Description                                            |
 | ------------------------ | ------------------------------------------------------ |

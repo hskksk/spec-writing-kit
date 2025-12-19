@@ -1052,10 +1052,10 @@ def download_and_extract_template(
 def ensure_executable_scripts(
     project_path: Path, tracker: StepTracker | None = None
 ) -> None:
-    """Ensure POSIX .sh scripts under .specify/scripts (recursively) have execute bits (no-op on Windows)."""
+    """Ensure POSIX .sh scripts under .writekit/scripts (recursively) have execute bits (no-op on Windows)."""
     if os.name == "nt":
         return  # Windows: skip silently
-    scripts_root = project_path / ".specify" / "scripts"
+    scripts_root = project_path / ".writekit" / "scripts"
     if not scripts_root.is_dir():
         return
     failures: list[str] = []
@@ -1306,7 +1306,7 @@ def init(
 
     tracker = StepTracker("Initialize Spec Writing Kit Project")
 
-    sys._specify_tracker_active = True
+    sys._writekit_tracker_active = True
 
     tracker.add("precheck", "Check required tools")
     tracker.complete("precheck", "ok")
@@ -1414,7 +1414,7 @@ def init(
             f"[cyan]cd {project_path if not here else '.'}[/cyan]\n"
             f"[cyan]git init[/cyan]\n"
             f"[cyan]git add .[/cyan]\n"
-            f"[cyan]git commit -m \"Initial commit\"[/cyan]",
+            f'[cyan]git commit -m "Initial commit"[/cyan]',
             title="[red]Git Initialization Failed[/red]",
             border_style="red",
             padding=(1, 2),

@@ -62,13 +62,12 @@ AGENT_TYPE="${1:-}"
 CLAUDE_FILE="$REPO_ROOT/CLAUDE.md"
 GEMINI_FILE="$REPO_ROOT/GEMINI.md"
 COPILOT_FILE="$REPO_ROOT/.github/agents/copilot-instructions.md"
-CURSOR_FILE="$REPO_ROOT/.cursor/rules/specify-rules.mdc"
-QWEN_FILE="$REPO_ROOT/QWEN.md"
-AGENTS_FILE="$REPO_ROOT/AGENTS.md"
-WINDSURF_FILE="$REPO_ROOT/.windsurf/rules/specify-rules.md"
-KILOCODE_FILE="$REPO_ROOT/.kilocode/rules/specify-rules.md"
-AUGGIE_FILE="$REPO_ROOT/.augment/rules/specify-rules.md"
-ROO_FILE="$REPO_ROOT/.roo/rules/specify-rules.md"
+CURSOR_FILE="$REPO_ROOT/.cursor/rules/writekit-rules.mdc"
+
+WINDSURF_FILE="$REPO_ROOT/.windsurf/rules/writekit-rules.md"
+KILOCODE_FILE="$REPO_ROOT/.kilocode/rules/writekit-rules.md"
+AUGGIE_FILE="$REPO_ROOT/.augment/rules/writekit-rules.md"
+ROO_FILE="$REPO_ROOT/.roo/rules/writekit-rules.md"
 CODEBUDDY_FILE="$REPO_ROOT/CODEBUDDY.md"
 QODER_FILE="$REPO_ROOT/QODER.md"
 AMP_FILE="$REPO_ROOT/AGENTS.md"
@@ -77,7 +76,7 @@ Q_FILE="$REPO_ROOT/AGENTS.md"
 BOB_FILE="$REPO_ROOT/AGENTS.md"
 
 # Template file
-TEMPLATE_FILE="$REPO_ROOT/.specify/templates/agent-file-template.md"
+TEMPLATE_FILE="$REPO_ROOT/.writekit/templates/agent-file-template.md"
 
 # Global variables for parsed plan data
 NEW_LANG=""
