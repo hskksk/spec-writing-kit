@@ -9,9 +9,9 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/github/spec-kit/actions/workflows/release.yml"><img src="https://github.com/github/spec-kit/actions/workflows/release.yml/badge.svg" alt="Release"/></a>
-    <a href="https://github.com/github/spec-kit/stargazers"><img src="https://img.shields.io/github/stars/github/spec-kit?style=social" alt="GitHub stars"/></a>
-    <a href="https://github.com/github/spec-kit/blob/main/LICENSE"><img src="https://img.shields.io/github/license/github/spec-kit" alt="License"/></a>
+    <a href="https://github.com/hskksk/spec-writing-kit/actions/workflows/release.yml"><img src="https://github.com/hskksk/spec-writing-kit/actions/workflows/release.yml/badge.svg" alt="Release"/></a>
+    <a href="https://github.com/hskksk/spec-writing-kit/stargazers"><img src="https://img.shields.io/github/stars/hskksk/spec-writing-kit?style=social" alt="GitHub stars"/></a>
+    <a href="https://github.com/hskksk/spec-writing-kit/blob/main/LICENSE"><img src="https://img.shields.io/github/license/hskksk/spec-writing-kit" alt="License"/></a>
     <a href="https://github.github.io/spec-kit/"><img src="https://img.shields.io/badge/docs-GitHub_Pages-blue" alt="Documentation"/></a>
 </p>
 
@@ -36,18 +36,20 @@
 
 ## ⚡ Get Started
 
-### 1. Install the CLI
+### 1. Install WritKit CLI
 
 Choose your preferred installation method:
 
 #### Option 1: Persistent Installation (Recommended)
 
 ```bash
-uv tool install writekit-cli --from git+https://github.com/github/spec-kit.git
+uv tool install writekit-cli --from git+https://github.com/hskksk/spec-writing-kit.git
 ```
+
 *Note: The package name and source URL will be updated once this fork is established as its own project.*
 
 Then use the tool directly:
+
 ```bash
 # Create new project
 writekit init <PROJECT_NAME>
@@ -59,7 +61,7 @@ writekit init . --ai claude
 #### Option 2: One-time Usage
 
 ```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT_NAME>
+uvx --from git+https://github.com/hskksk/spec-writing-kit.git specify init <PROJECT_NAME>
 ```
 
 ### 2. Begin the Writing Process
@@ -185,6 +187,7 @@ Spec-Driven Writing is a structured process that emphasizes:
 ## 👥 Maintainers
 
 This project is currently maintained by the forking user. Original project maintainers:
+
 - Den Delimarsky ([@localden](https://github.com/localden))
 - John Lam ([@jflam](https://github.com/jflam))
 
@@ -199,3 +202,4 @@ This project is a fork of and heavily influenced by the work and research of [Jo
 ## 📄 License
 
 This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) file for the full terms.
+
