@@ -16,25 +16,25 @@ This guide will help you get started with Spec-Driven Development using Spec Kit
 
 ```bash
 # Create a new project directory
-uvx --from git+https://github.com/github/spec-kit.git writekit init <PROJECT_NAME>
+uvx --from git+https://github.com/hskksk/spec-writing-kit.git writekit init <PROJECT_NAME>
 
 # OR initialize in the current directory
-uvx --from git+https://github.com/github/spec-kit.git writekit init .
+uvx --from git+https://github.com/hskksk/spec-writing-kit.git writekit init .
 ```
 
 Pick script type explicitly (optional):
 
 ```bash
-uvx --from git+https://github.com/github/spec-kit.git writekit init <PROJECT_NAME> --script ps  # Force PowerShell
-uvx --from git+https://github.com/github/spec-kit.git writekit init <PROJECT_NAME> --script sh  # Force POSIX shell
+uvx --from git+https://github.com/hskksk/spec-writing-kit.git writekit init <PROJECT_NAME> --script ps  # Force PowerShell
+uvx --from git+https://github.com/hskksk/spec-writing-kit.git writekit init <PROJECT_NAME> --script sh  # Force POSIX shell
 ```
 
 ### Step 2: Define Your Constitution
 
-**In your AI Agent's chat interface**, use the `/speckit.constitution` slash command to establish the core rules and principles for your project. You should provide your project's specific principles as arguments.
+**In your AI Agent's chat interface**, use the `/writekit.constitution` slash command to establish the core rules and principles for your project. You should provide your project's specific principles as arguments.
 
 ```markdown
-/speckit.constitution This project follows a "Library-First" approach. All features must be implemented as standalone libraries first. We use TDD strictly. We prefer functional programming patterns.
+/writekit.constitution This project follows a "Library-First" approach. All features must be implemented as standalone libraries first. We use TDD strictly. We prefer functional programming patterns.
 ```
 
 ### Step 3: Create the Spec
@@ -47,38 +47,38 @@ uvx --from git+https://github.com/github/spec-kit.git writekit init <PROJECT_NAM
 
 ### Step 4: Refine the Spec
 
-**In the chat**, use the `/speckit.clarify` slash command to identify and resolve ambiguities in your specification. You can provide specific focus areas as arguments.
+**In the chat**, use the `/writekit.clarify` slash command to identify and resolve ambiguities in your specification. You can provide specific focus areas as arguments.
 
 ```bash
-/speckit.clarify Focus on security and performance requirements.
+/writekit.clarify Focus on security and performance requirements.
 ```
 
 ### Step 5: Create a Technical Implementation Plan
 
-**In the chat**, use the `/speckit.plan` slash command to provide your tech stack and architecture choices.
+**In the chat**, use the `/writekit.plan` slash command to provide your tech stack and architecture choices.
 
 ```markdown
-/speckit.plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
+/writekit.plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
 ```
 
 ### Step 6: Break Down and Implement
 
-**In the chat**, use the `/speckit.tasks` slash command to create an actionable task list.
+**In the chat**, use the `/writekit.tasks` slash command to create an actionable task list.
 
 ```markdown
-/speckit.tasks
+/writekit.tasks
 ```
 
-Optionally, validate the plan with `/speckit.analyze`:
+Optionally, validate the plan with `/writekit.analyze`:
 
 ```markdown
-/speckit.analyze
+/writekit.analyze
 ```
 
-Then, use the `/speckit.implement` slash command to execute the plan.
+Then, use the `/writekit.implement` slash command to execute the plan.
 
 ```markdown
-/speckit.implement
+/writekit.implement
 ```
 
 ## Detailed Example: Building Taskify
@@ -90,7 +90,7 @@ Here's a complete example of building a team productivity platform:
 Initialize the project's constitution to set ground rules:
 
 ```markdown
-/speckit.constitution Taskify is a "Security-First" application. All user inputs must be validated. We use a microservices architecture. Code must be fully documented.
+/writekit.constitution Taskify is a "Security-First" application. All user inputs must be validated. We use a microservices architecture. Code must be fully documented.
 ```
 
 ### Step 2: Define Requirements with `/writekit.specify`
@@ -107,46 +107,46 @@ first testing thing to ensure that our basic features are set up.
 
 ### Step 3: Refine the Specification
 
-Use the `/speckit.clarify` command to interactively resolve any ambiguities in your specification. You can also provide specific details you want to ensure are included.
+Use the `/writekit.clarify` command to interactively resolve any ambiguities in your specification. You can also provide specific details you want to ensure are included.
 
 ```bash
-/speckit.clarify I want to clarify the task card details. For each task in the UI for a task card, you should be able to change the current status of the task between the different columns in the Kanban work board. You should be able to leave an unlimited number of comments for a particular card. You should be able to, from that task card, assign one of the valid users.
+/writekit.clarify I want to clarify the task card details. For each task in the UI for a task card, you should be able to change the current status of the task between the different columns in the Kanban work board. You should be able to leave an unlimited number of comments for a particular card. You should be able to, from that task card, assign one of the valid users.
 ```
 
-You can continue to refine the spec with more details using `/speckit.clarify`:
+You can continue to refine the spec with more details using `/writekit.clarify`:
 
 ```bash
-/speckit.clarify When you first launch Taskify, it's going to give you a list of the five users to pick from. There will be no password required. When you click on a user, you go into the main view, which displays the list of projects. When you click on a project, you open the Kanban board for that project. You're going to see the columns. You'll be able to drag and drop cards back and forth between different columns. You will see any cards that are assigned to you, the currently logged in user, in a different color from all the other ones, so you can quickly see yours. You can edit any comments that you make, but you can't edit comments that other people made. You can delete any comments that you made, but you can't delete comments anybody else made.
+/writekit.clarify When you first launch Taskify, it's going to give you a list of the five users to pick from. There will be no password required. When you click on a user, you go into the main view, which displays the list of projects. When you click on a project, you open the Kanban board for that project. You're going to see the columns. You'll be able to drag and drop cards back and forth between different columns. You will see any cards that are assigned to you, the currently logged in user, in a different color from all the other ones, so you can quickly see yours. You can edit any comments that you make, but you can't edit comments that other people made. You can delete any comments that you made, but you can't delete comments anybody else made.
 ```
 
 ### Step 4: Validate the Spec
 
-Validate the specification checklist using the `/speckit.checklist` command:
+Validate the specification checklist using the `/writekit.checklist` command:
 
 ```bash
-/speckit.checklist
+/writekit.checklist
 ```
 
-### Step 5: Generate Technical Plan with `/speckit.plan`
+### Step 5: Generate Technical Plan with `/writekit.plan`
 
 Be specific about your tech stack and technical requirements:
 
 ```bash
-/speckit.plan We are going to generate this using .NET Aspire, using Postgres as the database. The frontend should use Blazor server with drag-and-drop task boards, real-time updates. There should be a REST API created with a projects API, tasks API, and a notifications API.
+/writekit.plan We are going to generate this using .NET Aspire, using Postgres as the database. The frontend should use Blazor server with drag-and-drop task boards, real-time updates. There should be a REST API created with a projects API, tasks API, and a notifications API.
 ```
 
 ### Step 6: Validate and Implement
 
-Have your AI agent audit the implementation plan using `/speckit.analyze`:
+Have your AI agent audit the implementation plan using `/writekit.analyze`:
 
 ```bash
-/speckit.analyze
+/writekit.analyze
 ```
 
 Finally, implement the solution:
 
 ```bash
-/speckit.implement
+/writekit.implement
 ```
 
 ## Key Principles
@@ -161,4 +161,4 @@ Finally, implement the solution:
 
 - Read the [complete methodology](../spec-driven.md) for in-depth guidance
 - Check out [more examples](../templates) in the repository
-- Explore the [source code on GitHub](https://github.com/github/spec-kit)
+- Explore the [source code on GitHub](https://github.com/hskksk/spec-writing-kit)
