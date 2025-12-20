@@ -75,8 +75,8 @@ uvx --from /mnt/c/GitHub/spec-writing-kit writekit init demo-anywhere --ai copil
 Set an environment variable for convenience:
 
 ```bash
-export SPEC_KIT_SRC=/mnt/c/GitHub/spec-writing-kit
-uvx --from "$SPEC_KIT_SRC" writekit init demo-env --ai copilot --ignore-agent-tools --script ps
+export SPEC_WRITING_KIT_SRC=/mnt/c/GitHub/spec-writing-kit
+uvx --from "$SPEC_WRITING_KIT_SRC" writekit init demo-env --ai copilot --ignore-agent-tools --script ps
 ```
 
 (Optional) Define a shell function:
