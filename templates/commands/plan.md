@@ -36,7 +36,7 @@ Follow this execution flow:
 
 5.  **Output**: Write the completed plan to `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/plan.md`.
 
-## Output Format:
+## Output Format
 
 Please use the following Markdown structure for the `plan.md` file. Replace all bracketed placeholders `[ALL_CAPS]` with concrete information.
 

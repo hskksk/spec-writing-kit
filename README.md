@@ -43,7 +43,7 @@ Choose your preferred installation method:
 #### Option 1: Persistent Installation (Recommended)
 
 ```bash
-uv tool install writekit-cli --from git+https://github.com/hskksk/spec-writing-kit.git
+uv tool install spec-writing-kit-cli --from git+https://github.com/hskksk/spec-writing-kit.git
 ```
 
 *Note: The package name and source URL will be updated once this fork is established as its own project.*

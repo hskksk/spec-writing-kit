@@ -20,28 +20,31 @@ You are creating a detailed writing specification (spec) for a new content piece
 
 Follow this execution flow:
 
-1.  **Extract Core Elements**: From the user input ($ARGUMENTS) and the existing project constitution, identify the content's:
-    *   `[CONTENT_THEME]`: The central subject or topic.
-    *   `[CONTENT_PURPOSE]`: What the content aims to achieve (e.g., inform, persuade, entertain).
-    *   `[TARGET_AUDIENCE]`: Specific demographics, knowledge level, and interests of the intended readers.
-    *   `[KEY_ARGUMENTS]`: The main points or topics to be covered.
-    *   `[DESIRED_OUTCOMES]`: The tangible results or impact the content should have on the reader.
-    *   `[EXCLUSIONS]`: What content or topics are explicitly out of scope.
-    *   `[CONTENT_TYPE_REQUIREMENTS]`: Specifics based on content type (e.g., blog post, technical article, book chapter).
+### **Extract Core Elements**: From the user input ($ARGUMENTS) and the existing project constitution, identify the content's
 
-2.  **Generate `FEATURE_NUMBER` and `CONTENT_SLUG`**:
-    *   `FEATURE_NUMBER`: Determine the next available sequential number for new content pieces (e.g., `001`, `002`). Check existing `/specs/` directories.
-    *   `CONTENT_SLUG`: Create a URL-friendly slug from the `[CONTENT_THEME]` (e.g., "The Benefits of Spec-Driven Writing" -> "the-benefits-of-spec-driven-writing").
+- `[CONTENT_THEME]`: The central subject or topic.
+- `[CONTENT_PURPOSE]`: What the content aims to achieve (e.g., inform, persuade, entertain).
+- `[TARGET_AUDIENCE]`: Specific demographics, knowledge level, and interests of the intended readers.
+- `[KEY_ARGUMENTS]`: The main points or topics to be covered.
+- `[DESIRED_OUTCOMES]`: The tangible results or impact the content should have on the reader.
+- `[EXCLUSIONS]`: What content or topics are explicitly out of scope.
+- `[CONTENT_TYPE_REQUIREMENTS]`: Specifics based on content type (e.g., blog post, technical article, book chapter).
 
-3.  **Draft the Specification Content**: Fill in the `spec.md` template using the extracted elements. Ensure clarity, conciseness, and unambiguous language.
-    *   The specification should act as a contract for the subsequent writing phases.
-    *   Incorporate relevant principles from the `/memory/constitution.md` (if available and applicable) into the requirements.
+### **Generate `FEATURE_NUMBER` and `CONTENT_SLUG`**
 
-4.  **Validate against Constitution**: Ensure the drafted specification adheres to the principles outlined in `/memory/constitution.md`. Flag any potential conflicts or areas for clarification.
+- `FEATURE_NUMBER`: Determine the next available sequential number for new content pieces (e.g., `001`, `002`). Check existing `/specs/` directories.
+- `CONTENT_SLUG`: Create a URL-friendly slug from the `[CONTENT_THEME]` (e.g., "The Benefits of Spec-Driven Writing" -> "the-benefits-of-spec-driven-writing").
 
-5.  **Output**: Write the completed specification to `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/spec.md`.
+### **Draft the Specification Content**: Fill in the `spec.md` template using the extracted elements. Ensure clarity, conciseness, and unambiguous language
 
-## Output Format:
+- The specification should act as a contract for the subsequent writing phases.
+- Incorporate relevant principles from the `/memory/constitution.md` (if available and applicable) into the requirements.
+
+### **Validate against Constitution**: Ensure the drafted specification adheres to the principles outlined in `/memory/constitution.md`. Flag any potential conflicts or areas for clarification
+
+### **Output**: Write the completed specification to `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/spec.md`
+
+## Output Format
 
 Please use the following Markdown structure for the `spec.md` file. Replace all bracketed placeholders `[ALL_CAPS]` with concrete information.
 
@@ -66,10 +69,10 @@ This document outlines the specification for the content piece titled "[CONTENT_
 [TARGET_AUDIENCE_DETAILS] (e.g., experienced software developers, beginner writers, general public interested in technology)
 
 ### Persona (Optional)
--   **Name**: [PERSONA_NAME]
--   **Background**: [PERSONA_BACKGROUND]
--   **Goals**: [PERSONA_GOALS_RELATED_TO_CONTENT]
--   **Pain Points**: [PERSONA_PAIN_POINTS_CONTENT_ADDRESSES]
+- **Name**: [PERSONA_NAME]
+- **Background**: [PERSONA_BACKGROUND]
+- **Goals**: [PERSONA_GOALS_RELATED_TO_CONTENT]
+- **Pain Points**: [PERSONA_PAIN_POINTS_CONTENT_ADDRESSES]
 
 ## 4. Key Topics and Arguments
 
@@ -86,16 +89,16 @@ The following topics or areas are explicitly out of scope for this content piece
 [CONTENT_TYPE_REQUIREMENTS] (e.g., blog post, technical article, book chapter, white paper)
 
 ### Specifics
--   **Word Count Estimate**: [WORD_COUNT_ESTIMATE]
--   **Tone/Style**: [TONE_STYLE_FROM_CONSTITUTION_IF_APPLICABLE]
--   **SEO Keywords**: [SEO_KEYWORDS_IF_APPLICABLE]
--   **Reference/Citation Style**: [REFERENCE_STYLE_FROM_CONSTITUTION_IF_APPLICABLE]
+- **Word Count Estimate**: [WORD_COUNT_ESTIMATE]
+- **Tone/Style**: [TONE_STYLE_FROM_CONSTITUTION_IF_APPLICABLE]
+- **SEO Keywords**: [SEO_KEYWORDS_IF_APPLICABLE]
+- **Reference/Citation Style**: [REFERENCE_STYLE_FROM_CONSTITUTION_IF_APPLICABLE]
 
 ## 7. Compliance and Ethical Considerations
 
-*   Refer to the [Writing Constitution](/memory/constitution.md) for overarching principles.
-*   Ensure all information is accurate, fact-checked, and properly cited.
-*   Avoid plagiarism and respect intellectual property rights.
+* Refer to the [Writing Constitution](/memory/constitution.md) for overarching principles.
+* Ensure all information is accurate, fact-checked, and properly cited.
+* Avoid plagiarism and respect intellectual property rights.
 
 ---
 
