@@ -136,7 +136,7 @@ validate_environment() {
         log_error "No plan.md found at $NEW_PLAN"
         log_info "Make sure you're working on a feature with a corresponding spec directory"
         if [[ "$HAS_GIT" != "true" ]]; then
-            log_info "Use: export SPECIFY_FEATURE=your-feature-name or create a new feature first"
+            log_info "Use: export WRITEKIT_FEATURE=your-feature-name or create a new feature first"
         fi
         exit 1
     fi
