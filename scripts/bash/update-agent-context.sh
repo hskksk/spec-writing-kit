@@ -126,7 +126,7 @@ validate_environment() {
         if [[ "$HAS_GIT" == "true" ]]; then
             log_info "Make sure you're on a feature branch"
         else
-            log_info "Set SPECIFY_FEATURE environment variable or create a feature first"
+            log_info "Set WRITEKIT_FEATURE environment variable or create a feature first"
         fi
         exit 1
     fi

@@ -260,14 +260,14 @@ It **only** skips running `git init` and creating the initial commit.
 
 If you use `--no-git`, you'll need to manage feature directories manually:
 
-**Set the `SPECIFY_FEATURE` environment variable** before using planning commands:
+**Set the `WRITEKIT_FEATURE` environment variable** before using planning commands:
 
 ```bash
 # Bash/Zsh
-export SPECIFY_FEATURE="001-my-feature"
+export WRITEKIT_FEATURE="001-my-feature"
 
 # PowerShell
-$env:SPECIFY_FEATURE = "001-my-feature"
+$env:WRITEKIT_FEATURE = "001-my-feature"
 ```
 
 This tells Spec Kit which feature directory to use when creating specs, plans, and tasks.
