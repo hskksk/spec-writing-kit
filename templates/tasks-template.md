@@ -8,26 +8,26 @@ This document provides a detailed breakdown of tasks for the content piece "[CON
 
 ### [Section Name, e.g., Introduction]
 
--   [ ] [TASK_DESCRIPTION] ([ESTIMATED_EFFORT], [DEPENDENCIES], [COMPLETION_CRITERIA]) (e.g., "[ ] Draft introduction (300 words, introduce topic and thesis) (1h)")
--   [ ] [TASK_DESCRIPTION] (P) (e.g., "[ ] Select cover image for blog post (30min) (P)")
+- [ ] [TASK_DESCRIPTION] ([ESTIMATED_EFFORT], [DEPENDENCIES], [COMPLETION_CRITERIA]) (e.g., "[ ] Draft introduction (300 words, introduce topic and thesis) (1h)")
+- [ ] [TASK_DESCRIPTION] (P) (e.g., "[ ] Select cover image for blog post (30min) (P)")
 
 ### [Section Name, e.g., Chapter 1: Foundations]
 
--   [ ] [TASK_DESCRIPTION] (e.g., "[ ] Research historical context (2h, find 3 credible sources)")
--   [ ] [TASK_DESCRIPTION] (e.g., "[ ] Write Subsection 1.1 (500 words, summarize historical events) (2h) (Depends on: Research historical context)")
+- [ ] [TASK_DESCRIPTION] (e.g., "[ ] Research historical context (2h, find 3 credible sources)")
+- [ ] [TASK_DESCRIPTION] (e.g., "[ ] Write Subsection 1.1 (500 words, summarize historical events) (2h) (Depends on: Research historical context)")
 
 ... (repeat for all sections) ...
 
 ## 3. Media Element Creation/Selection Tasks
 
--   [ ] [MEDIA_TASK_DESCRIPTION] (e.g., "[ ] Create Diagram 1: Process Flow (1h) (Illustrates steps, uses project style guide)")
--   [ ] [MEDIA_TASK_DESCRIPTION] (e.g., "[ ] Source 3 relevant stock photos (1h) (Creative Commons license)")
+- [ ] [MEDIA_TASK_DESCRIPTION] (e.g., "[ ] Create Diagram 1: Process Flow (1h) (Illustrates steps, uses project style guide)")
+- [ ] [MEDIA_TASK_DESCRIPTION] (e.g., "[ ] Source 3 relevant stock photos (1h) (Creative Commons license)")
 
 ## 4. Review and Editing Tasks
 
--   [ ] Self-review for grammar, clarity, and logical flow (2h) (Depends on: All writing tasks completed)
--   [ ] Peer review (4h) (Depends on: Self-review completed)
--   [ ] Final proofreading (1h) (Depends on: Peer review completed)
+- [ ] Self-review for grammar, clarity, and logical flow (2h) (Depends on: All writing tasks completed)
+- [ ] Peer review (4h) (Depends on: Self-review completed)
+- [ ] Final proofreading (1h) (Depends on: Peer review completed)
 
 ---
 

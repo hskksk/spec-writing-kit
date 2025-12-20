@@ -18,10 +18,10 @@ This document outlines the specification for the content piece titled "[CONTENT_
 [TARGET_AUDIENCE_DETAILS] (e.g., experienced software developers, beginner writers, general public interested in technology)
 
 ### Persona (Optional)
--   **Name**: [PERSONA_NAME]
--   **Background**: [PERSONA_BACKGROUND]
--   **Goals**: [PERSONA_GOALS_RELATED_TO_CONTENT]
--   **Pain Points**: [PERSONA_PAIN_POINTS_CONTENT_ADDRESSES]
+- **Name**: [PERSONA_NAME]
+- **Background**: [PERSONA_BACKGROUND]
+- **Goals**: [PERSONA_GOALS_RELATED_TO_CONTENT]
+- **Pain Points**: [PERSONA_PAIN_POINTS_CONTENT_ADDRESSES]
 
 ## 4. Key Topics and Arguments
 
@@ -38,16 +38,16 @@ The following topics or areas are explicitly out of scope for this content piece
 [CONTENT_TYPE_REQUIREMENTS] (e.g., blog post, technical article, book chapter, white paper)
 
 ### Specifics
--   **Word Count Estimate**: [WORD_COUNT_ESTIMATE]
--   **Tone/Style**: [TONE_STYLE_FROM_CONSTITUTION_IF_APPLICABLE]
--   **SEO Keywords**: [SEO_KEYWORDS_IF_APPLICABLE]
--   **Reference/Citation Style**: [REFERENCE_STYLE_FROM_CONSTITUTION_IF_APPLICABLE]
+- **Word Count Estimate**: [WORD_COUNT_ESTIMATE]
+- **Tone/Style**: [TONE_STYLE_FROM_CONSTITUTION_IF_APPLICABLE]
+- **SEO Keywords**: [SEO_KEYWORDS_IF_APPLICABLE]
+- **Reference/Citation Style**: [REFERENCE_STYLE_FROM_CONSTITUTION_IF_APPLICABLE]
 
 ## 7. Compliance and Ethical Considerations
 
-*   Refer to the [Writing Constitution](/memory/constitution.md) for overarching principles.
-*   Ensure all information is accurate, fact-checked, and properly cited.
-*   Avoid plagiarism and respect intellectual property rights.
+- Refer to the [Writing Constitution](/memory/constitution.md) for overarching principles.
+- Ensure all information is accurate, fact-checked, and properly cited.
+- Avoid plagiarism and respect intellectual property rights.
 
 ---
 
