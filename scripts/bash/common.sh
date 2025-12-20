@@ -14,7 +14,7 @@ get_repo_root() {
 
 # Get current branch, with fallback for non-git repositories
 get_current_branch() {
-    # First check if SPECIFY_FEATURE environment variable is set
+    # First check if WRITEKIT_FEATURE environment variable is set
     if [[ -n "${WRITEKIT_FEATURE:-}" ]]; then
         echo "$WRITEKIT_FEATURE"
         return
