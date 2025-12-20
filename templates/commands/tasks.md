@@ -1,17 +1,9 @@
 ---
-description: Generate an actionable, dependency-ordered tasks.md for the feature based on available design artifacts.
-handoffs: 
-  - label: Analyze For Consistency
-    agent: speckit.analyze
-    prompt: Run a project analysis for consistency
-    send: true
-  - label: Implement Project
-    agent: speckit.implement
-    prompt: Start the implementation in phases
-    send: true
-scripts:
-  sh: scripts/bash/check-prerequisites.sh --json
-  ps: scripts/powershell/check-prerequisites.ps1 -Json
+description: Break down the writing plan into specific, actionable tasks, including dependencies and completion criteria.
+handoffs:
+  - label: Execute Writing
+    agent: writekit.write
+    prompt: Proceed with writing the content based on these tasks.
 ---
 
 ## User Input
@@ -24,117 +16,65 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
-1. **Setup**: Run `{SCRIPT}` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
+You are generating a detailed task breakdown for the writing process, based on the writing plan located at `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/plan.md`. This task list will guide the subsequent `write` phase.
 
-2. **Load design documents**: Read from FEATURE_DIR:
-   - **Required**: plan.md (tech stack, libraries, structure), spec.md (user stories with priorities)
-   - **Optional**: data-model.md (entities), contracts/ (API endpoints), research.md (decisions), quickstart.md (test scenarios)
-   - Note: Not all projects have all documents. Generate tasks based on what's available.
+Follow this execution flow:
 
-3. **Execute task generation workflow**:
-   - Load plan.md and extract tech stack, libraries, project structure
-   - Load spec.md and extract user stories with their priorities (P1, P2, P3, etc.)
-   - If data-model.md exists: Extract entities and map to user stories
-   - If contracts/ exists: Map endpoints to user stories
-   - If research.md exists: Extract decisions for setup tasks
-   - Generate tasks organized by user story (see Task Generation Rules below)
-   - Generate dependency graph showing user story completion order
-   - Create parallel execution examples per user story
-   - Validate task completeness (each user story has all needed tasks, independently testable)
+1.  **Load Writing Plan**: Load the existing writing plan from `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/plan.md`. Understand the content structure, sections, and media elements.
+2.  **Extract Core Elements from User Input**: Identify any specific instructions or preferences provided in $ARGUMENTS for task granularity, grouping, or focus.
+3.  **Decompose into Tasks**: Based on the writing plan, break down the content creation into granular, actionable tasks.
+    *   **Section-based tasks**: Create tasks for each major section, subsection, and potentially paragraph.
+    *   **Dependency mapping**: Identify and note dependencies between tasks (e.g., introduction before body, research before writing a specific section).
+    *   **Media creation/selection tasks**: Include tasks for creating, sourcing, or selecting images, diagrams, code examples, or video links.
+    *   **Completion criteria**: Define clear criteria for each task (e.g., "Draft introduction (500 words, covers thesis)", "Create diagram 1 (illustrates data flow, includes labels)").
+    *   **Parallelization**: Mark tasks that can be performed in parallel.
+    *   **Review/Editing tasks**: Include tasks for self-review, peer review, and final proofreading at appropriate stages.
 
-4. **Generate tasks.md**: Use `templates/tasks-template.md` as structure, fill with:
-   - Correct feature name from plan.md
-   - Phase 1: Setup tasks (project initialization)
-   - Phase 2: Foundational tasks (blocking prerequisites for all user stories)
-   - Phase 3+: One phase per user story (in priority order from spec.md)
-   - Each phase includes: story goal, independent test criteria, tests (if requested), implementation tasks
-   - Final Phase: Polish & cross-cutting concerns
-   - All tasks must follow the strict checklist format (see Task Generation Rules below)
-   - Clear file paths for each task
-   - Dependencies section showing story completion order
-   - Parallel execution examples per story
-   - Implementation strategy section (MVP first, incremental delivery)
+4.  **Validate against Writing Constitution and Plan**:
+    *   Ensure the task breakdown aligns with the principles in `/memory/constitution.md`.
+    *   Confirm that all aspects of `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/plan.md` are covered by specific tasks.
 
-5. **Report**: Output path to generated tasks.md and summary:
-   - Total task count
-   - Task count per user story
-   - Parallel opportunities identified
-   - Independent test criteria for each story
-   - Suggested MVP scope (typically just User Story 1)
-   - Format validation: Confirm ALL tasks follow the checklist format (checkbox, ID, labels, file paths)
+5.  **Output**: Write the completed task list to `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/tasks.md`.
 
-Context for task generation: {ARGS}
+## Output Format:
 
-The tasks.md should be immediately executable - each task must be specific enough that an LLM can complete it without additional context.
+Please use the following Markdown structure for the `tasks.md` file. Replace all bracketed placeholders `[ALL_CAPS]` with concrete information.
 
-## Task Generation Rules
+```markdown
+# Writing Tasks: [CONTENT_THEME]
 
-**CRITICAL**: Tasks MUST be organized by user story to enable independent implementation and testing.
+## 1. Overview
 
-**Tests are OPTIONAL**: Only generate test tasks if explicitly requested in the feature specification or if user requests TDD approach.
+This document provides a detailed breakdown of tasks for the content piece "[CONTENT_THEME]", derived from the writing plan.
 
-### Checklist Format (REQUIRED)
+## 2. Task Breakdown
 
-Every task MUST strictly follow this format:
+### [Section Name, e.g., Introduction]
 
-```text
-- [ ] [TaskID] [P?] [Story?] Description with file path
+-   [ ] [TASK_DESCRIPTION] ([ESTIMATED_EFFORT], [DEPENDENCIES], [COMPLETION_CRITERIA]) (e.g., "[ ] Draft introduction (300 words, introduce topic and thesis) (1h)")
+-   [ ] [TASK_DESCRIPTION] (P) (e.g., "[ ] Select cover image for blog post (30min) (P)")
+
+### [Section Name, e.g., Chapter 1: Foundations]
+
+-   [ ] [TASK_DESCRIPTION] (e.g., "[ ] Research historical context (2h, find 3 credible sources)")
+-   [ ] [TASK_DESCRIPTION] (e.g., "[ ] Write Subsection 1.1 (500 words, summarize historical events) (2h) (Depends on: Research historical context)")
+
+... (repeat for all sections) ...
+
+## 3. Media Element Creation/Selection Tasks
+
+-   [ ] [MEDIA_TASK_DESCRIPTION] (e.g., "[ ] Create Diagram 1: Process Flow (1h) (Illustrates steps, uses project style guide)")
+-   [ ] [MEDIA_TASK_DESCRIPTION] (e.g., "[ ] Source 3 relevant stock photos (1h) (Creative Commons license)")
+
+## 4. Review and Editing Tasks
+
+-   [ ] Self-review for grammar, clarity, and logical flow (2h) (Depends on: All writing tasks completed)
+-   [ ] Peer review (4h) (Depends on: Self-review completed)
+-   [ ] Final proofreading (1h) (Depends on: Peer review completed)
+
+---
+
+**Generated by Spec Writing Kit CLI**
+**Version**: [TASKS_VERSION]
+**Date**: [GENERATION_DATE]
 ```
-
-**Format Components**:
-
-1. **Checkbox**: ALWAYS start with `- [ ]` (markdown checkbox)
-2. **Task ID**: Sequential number (T001, T002, T003...) in execution order
-3. **[P] marker**: Include ONLY if task is parallelizable (different files, no dependencies on incomplete tasks)
-4. **[Story] label**: REQUIRED for user story phase tasks only
-   - Format: [US1], [US2], [US3], etc. (maps to user stories from spec.md)
-   - Setup phase: NO story label
-   - Foundational phase: NO story label  
-   - User Story phases: MUST have story label
-   - Polish phase: NO story label
-5. **Description**: Clear action with exact file path
-
-**Examples**:
-
-- ✅ CORRECT: `- [ ] T001 Create project structure per implementation plan`
-- ✅ CORRECT: `- [ ] T005 [P] Implement authentication middleware in src/middleware/auth.py`
-- ✅ CORRECT: `- [ ] T012 [P] [US1] Create User model in src/models/user.py`
-- ✅ CORRECT: `- [ ] T014 [US1] Implement UserService in src/services/user_service.py`
-- ❌ WRONG: `- [ ] Create User model` (missing ID and Story label)
-- ❌ WRONG: `T001 [US1] Create model` (missing checkbox)
-- ❌ WRONG: `- [ ] [US1] Create User model` (missing Task ID)
-- ❌ WRONG: `- [ ] T001 [US1] Create model` (missing file path)
-
-### Task Organization
-
-1. **From User Stories (spec.md)** - PRIMARY ORGANIZATION:
-   - Each user story (P1, P2, P3...) gets its own phase
-   - Map all related components to their story:
-     - Models needed for that story
-     - Services needed for that story
-     - Endpoints/UI needed for that story
-     - If tests requested: Tests specific to that story
-   - Mark story dependencies (most stories should be independent)
-
-2. **From Contracts**:
-   - Map each contract/endpoint → to the user story it serves
-   - If tests requested: Each contract → contract test task [P] before implementation in that story's phase
-
-3. **From Data Model**:
-   - Map each entity to the user story(ies) that need it
-   - If entity serves multiple stories: Put in earliest story or Setup phase
-   - Relationships → service layer tasks in appropriate story phase
-
-4. **From Setup/Infrastructure**:
-   - Shared infrastructure → Setup phase (Phase 1)
-   - Foundational/blocking tasks → Foundational phase (Phase 2)
-   - Story-specific setup → within that story's phase
-
-### Phase Structure
-
-- **Phase 1**: Setup (project initialization)
-- **Phase 2**: Foundational (blocking prerequisites - MUST complete before user stories)
-- **Phase 3+**: User Stories in priority order (P1, P2, P3...)
-  - Within each story: Tests (if requested) → Models → Services → Endpoints → Integration
-  - Each phase should be a complete, independently testable increment
-- **Final Phase**: Polish & Cross-Cutting Concerns

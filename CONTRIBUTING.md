@@ -37,7 +37,7 @@ On [GitHub Codespaces](https://github.com/features/codespaces) it's even simpler
 
 1. Fork and clone the repository
 1. Configure and install the dependencies: `uv sync`
-1. Make sure the CLI works on your machine: `uv run specify --help`
+1. Make sure the CLI works on your machine: `uv run writekit --help`
 1. Create a new branch: `git checkout -b my-branch-name`
 1. Make your change, add tests, and make sure everything still works
 1. Test the CLI functionality with a sample project if relevant
@@ -55,16 +55,16 @@ Here are a few things you can do that will increase the likelihood of your pull 
 
 ## Development workflow
 
-When working on spec-kit:
+When working on spec-writing-kit:
 
-1. Test changes with the `specify` CLI commands (`/speckit.specify`, `/speckit.plan`, `/speckit.tasks`) in your coding agent of choice
+1. Test changes with the `writekit` CLI commands (`/writekit.specify`, `/writekit.plan`, `/writekit.tasks`) in your coding agent of choice
 2. Verify templates are working correctly in `templates/` directory
 3. Test script functionality in the `scripts/` directory
 4. Ensure memory files (`memory/constitution.md`) are updated if major process changes are made
 
 ### Testing template and command changes locally
 
-Running `uv run specify init` pulls released packages, which won’t include your local changes.  
+Running `uv run writekit init` pulls released packages, which won’t include your local changes.  
 To test your templates, commands, and other changes locally, follow these steps:
 
 1. **Create release packages**

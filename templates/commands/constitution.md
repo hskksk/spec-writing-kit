@@ -1,9 +1,9 @@
 ---
-description: Create or update the project constitution from interactive or provided principle inputs, ensuring all dependent templates stay in sync.
-handoffs: 
-  - label: Build Specification
-    agent: speckit.specify
-    prompt: Implement the feature specification based on the updated constitution. I want to build...
+description: Define the overall writing principles and style guide for the content.
+handoffs:
+  - label: Build Writing Specification
+    agent: writekit.specify
+    prompt: Create a detailed writing specification based on the updated writing constitution. I want to write about...
 ---
 
 ## User Input
@@ -16,20 +16,20 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
-You are updating the project constitution at `/memory/constitution.md`. This file is a TEMPLATE containing placeholder tokens in square brackets (e.g. `[PROJECT_NAME]`, `[PRINCIPLE_1_NAME]`). Your job is to (a) collect/derive concrete values, (b) fill the template precisely, and (c) propagate any amendments across dependent artifacts.
+You are updating the writing constitution at `/memory/constitution.md`. This file defines the core writing principles and style guide for all content within this project. Your job is to (a) collect/derive concrete values for these principles, (b) fill the template precisely, and (c) propagate any amendments across dependent artifacts.
 
 Follow this execution flow:
 
 1. Load the existing constitution template at `/memory/constitution.md`.
    - Identify every placeholder token of the form `[ALL_CAPS_IDENTIFIER]`.
-   **IMPORTANT**: The user might require less or more principles than the ones used in the template. If a number is specified, respect that - follow the general template. You will update the doc accordingly.
+   **IMPORTANT**: The user might provide specific instructions or examples for the writing principles. Respect these inputs.
 
 2. Collect/derive values for placeholders:
    - If user input (conversation) supplies a value, use it.
-   - Otherwise infer from existing repo context (README, docs, prior constitution versions if embedded).
+   - Otherwise infer from existing repo context (README, prior constitution versions if embedded).
    - For governance dates: `RATIFICATION_DATE` is the original adoption date (if unknown ask or mark TODO), `LAST_AMENDED_DATE` is today if changes are made, otherwise keep previous.
    - `CONSTITUTION_VERSION` must increment according to semantic versioning rules:
-     - MAJOR: Backward incompatible governance/principle removals or redefinitions.
+     - MAJOR: Backward incompatible principle removals or redefinitions.
      - MINOR: New principle/section added or materially expanded guidance.
      - PATCH: Clarifications, wording, typo fixes, non-semantic refinements.
    - If version bump type ambiguous, propose reasoning before finalizing.
@@ -37,15 +37,14 @@ Follow this execution flow:
 3. Draft the updated constitution content:
    - Replace every placeholder with concrete text (no bracketed tokens left except intentionally retained template slots that the project has chosen not to define yet—explicitly justify any left).
    - Preserve heading hierarchy and comments can be removed once replaced unless they still add clarifying guidance.
-   - Ensure each Principle section: succinct name line, paragraph (or bullet list) capturing non‑negotiable rules, explicit rationale if not obvious.
-   - Ensure Governance section lists amendment procedure, versioning policy, and compliance review expectations.
+   - Ensure each principle section is clear, actionable, and reflects the defined writing style, audience, quality, and ethics.
 
 4. Consistency propagation checklist (convert prior checklist into active validations):
    - Read `/templates/plan-template.md` and ensure any "Constitution Check" or rules align with updated principles.
-   - Read `/templates/spec-template.md` for scope/requirements alignment—update if constitution adds/removes mandatory sections or constraints.
-   - Read `/templates/tasks-template.md` and ensure task categorization reflects new or removed principle-driven task types (e.g., observability, versioning, testing discipline).
-   - Read each command file in `/templates/commands/*.md` (including this one) to verify no outdated references (agent-specific names like CLAUDE only) remain when generic guidance is required.
-   - Read any runtime guidance docs (e.g., `README.md`, `docs/quickstart.md`, or agent-specific guidance files if present). Update references to principles changed.
+   - Read `/templates/spec-template.md` (should be renamed to writing-spec-template.md or similar) for scope/requirements alignment—update if constitution adds/removes mandatory sections or constraints.
+   - Read `/templates/tasks-template.md` and ensure task categorization reflects new or removed principle-driven task types (e.g., tone review, citation checks).
+   - Read each command file in `/templates/commands/*.md` (excluding research.md, write.md which are later stages) to verify no outdated references remain.
+   - Read any runtime guidance docs (e.g., `README.md`). Update references to principles changed.
 
 5. Produce a Sync Impact Report (prepend as an HTML comment at top of the constitution file after update):
    - Version change: old → new
@@ -66,7 +65,7 @@ Follow this execution flow:
 8. Output a final summary to the user with:
    - New version and bump rationale.
    - Any files flagged for manual follow-up.
-   - Suggested commit message (e.g., `docs: amend constitution to vX.Y.Z (principle additions + governance update)`).
+   - Suggested commit message (e.g., `docs: amend writing constitution to vX.Y.Z (style guide update + ethical guidelines)`).
 
 Formatting & Style Requirements:
 

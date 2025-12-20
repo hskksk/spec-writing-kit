@@ -61,9 +61,9 @@ New-Item -ItemType Directory -Path $GenReleasesDir -Force | Out-Null
 function Rewrite-Paths {
     param([string]$Content)
     
-    $Content = $Content -replace '(/?)\bmemory/', '.specify/memory/'
-    $Content = $Content -replace '(/?)\bscripts/', '.specify/scripts/'
-    $Content = $Content -replace '(/?)\btemplates/', '.specify/templates/'
+    $Content = $Content -replace '(/?)\bmemory/', '.writekit/memory/'
+    $Content = $Content -replace '(/?)\bscripts/', '.writekit/scripts/'
+    $Content = $Content -replace '(/?)\btemplates/', '.writekit/templates/'
     return $Content
 }
 
@@ -160,7 +160,7 @@ function Generate-Commands {
         $body = Rewrite-Paths -Content $body
         
         # Generate output file based on extension
-        $outputFile = Join-Path $OutputDir "speckit.$name.$Extension"
+        $outputFile = Join-Path $OutputDir "writekit.$name.$Extension"
         
         switch ($Extension) {
             'toml' {
@@ -186,7 +186,7 @@ function Generate-CopilotPrompts {
     
     New-Item -ItemType Directory -Path $PromptsDir -Force | Out-Null
     
-    $agentFiles = Get-ChildItem -Path "$AgentsDir/speckit.*.agent.md" -File -ErrorAction SilentlyContinue
+    $agentFiles = Get-ChildItem -Path "$AgentsDir/writekit.*.agent.md" -File -ErrorAction SilentlyContinue
     
     foreach ($agentFile in $agentFiles) {
         $basename = $agentFile.Name -replace '\.agent\.md$', ''
@@ -212,13 +212,13 @@ function Build-Variant {
     New-Item -ItemType Directory -Path $baseDir -Force | Out-Null
     
     # Copy base structure but filter scripts by variant
-    $specDir = Join-Path $baseDir ".specify"
+    $specDir = Join-Path $baseDir ".writekit"
     New-Item -ItemType Directory -Path $specDir -Force | Out-Null
-    
+
     # Copy memory directory
     if (Test-Path "memory") {
         Copy-Item -Path "memory" -Destination $specDir -Recurse -Force
-        Write-Host "Copied memory -> .specify"
+        Write-Host "Copied memory -> .writekit"
     }
     
     # Only copy the relevant script variant directory
@@ -230,13 +230,13 @@ function Build-Variant {
             'sh' {
                 if (Test-Path "scripts/bash") {
                     Copy-Item -Path "scripts/bash" -Destination $scriptsDestDir -Recurse -Force
-                    Write-Host "Copied scripts/bash -> .specify/scripts"
+                    Write-Host "Copied scripts/bash -> .writekit/scripts"
                 }
             }
             'ps' {
                 if (Test-Path "scripts/powershell") {
                     Copy-Item -Path "scripts/powershell" -Destination $scriptsDestDir -Recurse -Force
-                    Write-Host "Copied scripts/powershell -> .specify/scripts"
+                    Write-Host "Copied scripts/powershell -> .writekit/scripts"
                 }
             }
         }
@@ -261,7 +261,7 @@ function Build-Variant {
             New-Item -ItemType Directory -Path $destFileDir -Force | Out-Null
             Copy-Item -Path $_.FullName -Destination $destFile -Force
         }
-        Write-Host "Copied templates -> .specify/templates"
+        Write-Host "Copied templates -> .writekit/templates"
     }
     
     # Generate agent-specific command files
@@ -350,7 +350,7 @@ function Build-Variant {
     }
     
     # Create zip archive
-    $zipFile = Join-Path $GenReleasesDir "spec-kit-template-${Agent}-${Script}-${Version}.zip"
+    $zipFile = Join-Path $GenReleasesDir "spec-writing-kit-template-${Agent}-${Script}-${Version}.zip"
     Compress-Archive -Path "$baseDir/*" -DestinationPath $zipFile -Force
     Write-Host "Created $zipFile"
 }
@@ -419,6 +419,6 @@ foreach ($agent in $AgentList) {
 }
 
 Write-Host "`nArchives in ${GenReleasesDir}:"
-Get-ChildItem -Path $GenReleasesDir -Filter "spec-kit-template-*-${Version}.zip" | ForEach-Object {
+Get-ChildItem -Path $GenReleasesDir -Filter "spec-writing-kit-template-*-${Version}.zip" | ForEach-Object {
     Write-Host "  $($_.Name)"
 }

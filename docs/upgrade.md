@@ -8,20 +8,20 @@
 
 | What to Upgrade | Command | When to Use |
 |----------------|---------|-------------|
-| **CLI Tool Only** | `uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git` | Get latest CLI features without touching project files |
-| **Project Files** | `specify init --here --force --ai <your-agent>` | Update slash commands, templates, and scripts in your project |
+| **CLI Tool Only** | `uv tool install writekit-cli --force --from git+https://github.com/hskksk/spec-writing-kit.git` | Get latest CLI features without touching project files |
+| **Project Files** | `writekit init --here --force --ai <your-agent>` | Update slash commands, templates, and scripts in your project |
 | **Both** | Run CLI upgrade, then project update | Recommended for major version updates |
 
 ---
 
 ## Part 1: Upgrade the CLI Tool
 
-The CLI tool (`specify`) is separate from your project files. Upgrade it to get the latest features and bug fixes.
+The CLI tool (`writekit`) is separate from your project files. Upgrade it to get the latest features and bug fixes.
 
 ### If you installed with `uv tool install`
 
 ```bash
-uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
+uv tool install writekit-cli --force --from git+https://github.com/hskksk/spec-writing-kit.git
 ```
 
 ### If you use one-shot `uvx` commands
@@ -29,13 +29,13 @@ uv tool install specify-cli --force --from git+https://github.com/github/spec-ki
 No upgrade needed—`uvx` always fetches the latest version. Just run your commands as normal:
 
 ```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init --here --ai copilot
+uvx --from git+https://github.com/hskksk/spec-writing-kit.git writekit init --here --ai copilot
 ```
 
 ### Verify the upgrade
 
 ```bash
-specify check
+writekit check
 ```
 
 This shows installed tools and confirms the CLI is working.
@@ -48,12 +48,12 @@ When Spec Kit releases new features (like new slash commands or updated template
 
 ### What gets updated?
 
-Running `specify init --here --force` will update:
+Running `writekit init --here --force` will update:
 
 - ✅ **Slash command files** (`.claude/commands/`, `.github/prompts/`, etc.)
-- ✅ **Script files** (`.specify/scripts/`)
-- ✅ **Template files** (`.specify/templates/`)
-- ✅ **Shared memory files** (`.specify/memory/`) - **⚠️ See warnings below**
+- ✅ **Script files** (`.writekit/scripts/`)
+- ✅ **Template files** (`.writekit/templates/`)
+- ✅ **Shared memory files** (`.writekit/memory/`) - **⚠️ See warnings below**
 
 ### What stays safe?
 
@@ -71,7 +71,7 @@ The `specs/` directory is completely excluded from template packages and will ne
 Run this inside your project directory:
 
 ```bash
-specify init --here --force --ai <your-agent>
+writekit init --here --force --ai <your-agent>
 ```
 
 Replace `<your-agent>` with your AI assistant. Refer to this list of [Supported AI Agents](../README.md#-supported-ai-agents)
@@ -79,7 +79,7 @@ Replace `<your-agent>` with your AI assistant. Refer to this list of [Supported 
 **Example:**
 
 ```bash
-specify init --here --force --ai copilot
+writekit init --here --force --ai copilot
 ```
 
 ### Understanding the `--force` flag
@@ -102,35 +102,35 @@ With `--force`, it skips the confirmation and proceeds immediately.
 
 ### 1. Constitution file will be overwritten
 
-**Known issue:** `specify init --here --force` currently overwrites `.specify/memory/constitution.md` with the default template, erasing any customizations you made.
+**Known issue:** `writekit init --here --force` currently overwrites `.writekit/memory/constitution.md` with the default template, erasing any customizations you made.
 
 **Workaround:**
 
 ```bash
 # 1. Back up your constitution before upgrading
-cp .specify/memory/constitution.md .specify/memory/constitution-backup.md
+cp .writekit/memory/constitution.md .writekit/memory/constitution-backup.md
 
 # 2. Run the upgrade
-specify init --here --force --ai copilot
+writekit init --here --force --ai copilot
 
 # 3. Restore your customized constitution
-mv .specify/memory/constitution-backup.md .specify/memory/constitution.md
+mv .writekit/memory/constitution-backup.md .writekit/memory/constitution.md
 ```
 
 Or use git to restore it:
 
 ```bash
 # After upgrade, restore from git history
-git restore .specify/memory/constitution.md
+git restore .writekit/memory/constitution.md
 ```
 
 ### 2. Custom template modifications
 
-If you customized any templates in `.specify/templates/`, the upgrade will overwrite them. Back them up first:
+If you customized any templates in `.writekit/templates/`, the upgrade will overwrite them. Back them up first:
 
 ```bash
 # Back up custom templates
-cp -r .specify/templates .specify/templates-backup
+cp -r .writekit/templates .writekit/templates-backup
 
 # After upgrade, merge your changes back manually
 ```
@@ -151,8 +151,8 @@ cd .kilocode/rules/
 ls -la
 
 # Delete old versions (example filenames - yours may differ)
-rm speckit.specify-old.md
-rm speckit.plan-v1.md
+rm writekit.specify-old.md
+rm writekit.plan-v1.md
 ```
 
 Restart your IDE to refresh the command list.
@@ -165,30 +165,30 @@ Restart your IDE to refresh the command list.
 
 ```bash
 # Upgrade CLI (if using persistent install)
-uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
+uv tool install writekit-cli --force --from git+https://github.com/hskksk/spec-writing-kit.git
 
 # Update project files to get new commands
-specify init --here --force --ai copilot
+writekit init --here --force --ai copilot
 
 # Restore your constitution if customized
-git restore .specify/memory/constitution.md
+git restore .writekit/memory/constitution.md
 ```
 
 ### Scenario 2: "I customized templates and constitution"
 
 ```bash
 # 1. Back up customizations
-cp .specify/memory/constitution.md /tmp/constitution-backup.md
-cp -r .specify/templates /tmp/templates-backup
+cp .writekit/memory/constitution.md /tmp/constitution-backup.md
+cp -r .writekit/templates /tmp/templates-backup
 
 # 2. Upgrade CLI
-uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
+uv tool install writekit-cli --force --from git+https://github.com/hskksk/spec-writing-kit.git
 
 # 3. Update project
-specify init --here --force --ai copilot
+writekit init --here --force --ai copilot
 
 # 4. Restore customizations
-mv /tmp/constitution-backup.md .specify/memory/constitution.md
+mv /tmp/constitution-backup.md .writekit/memory/constitution.md
 # Manually merge template changes if needed
 ```
 
@@ -204,7 +204,7 @@ cd .kilocode/rules/
 ls -la
 
 # Delete old command files
-rm speckit.old-command-name.md
+rm writekit.old-command-name.md
 
 # Restart your IDE
 ```
@@ -215,13 +215,13 @@ If you initialized your project with `--no-git`, you can still upgrade:
 
 ```bash
 # Manually back up files you customized
-cp .specify/memory/constitution.md /tmp/constitution-backup.md
+cp .writekit/memory/constitution.md /tmp/constitution-backup.md
 
 # Run upgrade
-specify init --here --force --ai copilot --no-git
+writekit init --here --force --ai copilot --no-git
 
 # Restore customizations
-mv /tmp/constitution-backup.md .specify/memory/constitution.md
+mv /tmp/constitution-backup.md .writekit/memory/constitution.md
 ```
 
 The `--no-git` flag skips git initialization but doesn't affect file updates.
@@ -239,13 +239,13 @@ The `--no-git` flag tells Spec Kit to **skip git repository initialization**. Th
 **During initial setup:**
 
 ```bash
-specify init my-project --ai copilot --no-git
+writekit init my-project --ai copilot --no-git
 ```
 
 **During upgrade:**
 
 ```bash
-specify init --here --force --ai copilot --no-git
+writekit init --here --force --ai copilot --no-git
 ```
 
 ### What `--no-git` does NOT do
@@ -303,10 +303,10 @@ This tells Spec Kit which feature directory to use when creating specs, plans, a
 
 ```bash
 # If you committed before upgrading
-git restore .specify/memory/constitution.md
+git restore .writekit/memory/constitution.md
 
 # If you backed up manually
-cp /tmp/constitution-backup.md .specify/memory/constitution.md
+cp /tmp/constitution-backup.md .writekit/memory/constitution.md
 ```
 
 **Prevention:** Always commit or back up `constitution.md` before upgrading.
@@ -323,20 +323,20 @@ Do you want to continue? [y/N]
 
 **What this means:**
 
-This warning appears when you run `specify init --here` (or `specify init .`) in a directory that already has files. It's telling you:
+This warning appears when you run `writekit init --here` (or `writekit init .`) in a directory that already has files. It's telling you:
 
 1. **The directory has existing content** - In the example, 25 files/folders
 2. **Files will be merged** - New template files will be added alongside your existing files
-3. **Some files may be overwritten** - If you already have Spec Kit files (`.claude/`, `.specify/`, etc.), they'll be replaced with the new versions
+3. **Some files may be overwritten** - If you already have Spec Kit files (`.claude/`, `.writekit/`, etc.), they'll be replaced with the new versions
 
 **What gets overwritten:**
 
 Only Spec Kit infrastructure files:
 
 - Agent command files (`.claude/commands/`, `.github/prompts/`, etc.)
-- Scripts in `.specify/scripts/`
-- Templates in `.specify/templates/`
-- Memory files in `.specify/memory/` (including constitution)
+- Scripts in `.writekit/scripts/`
+- Templates in `.writekit/templates/`
+- Memory files in `.writekit/memory/` (including constitution)
 
 **What stays untouched:**
 
@@ -352,7 +352,7 @@ Only Spec Kit infrastructure files:
 - **Use `--force` flag** - Skip this confirmation entirely:
 
   ```bash
-  specify init --here --force --ai copilot
+  writekit init --here --force --ai copilot
   ```
 
 **When you see this warning:**
@@ -361,7 +361,7 @@ Only Spec Kit infrastructure files:
 - ✅ **Expected** when adding Spec Kit to an existing codebase
 - ⚠️ **Unexpected** if you thought you were creating a new project in an empty directory
 
-**Prevention tip:** Before upgrading, commit or back up your `.specify/memory/constitution.md` if you customized it.
+**Prevention tip:** Before upgrading, commit or back up your `.writekit/memory/constitution.md` if you customized it.
 
 ### "CLI upgrade doesn't seem to work"
 
@@ -371,10 +371,10 @@ Verify the installation:
 # Check installed tools
 uv tool list
 
-# Should show specify-cli
+# Should show writekit-cli
 
 # Verify path
-which specify
+which writekit
 
 # Should point to the uv tool installation directory
 ```
@@ -382,23 +382,23 @@ which specify
 If not found, reinstall:
 
 ```bash
-uv tool uninstall specify-cli
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+uv tool uninstall writekit-cli
+uv tool install writekit-cli --from git+https://github.com/hskksk/spec-writing-kit.git
 ```
 
-### "Do I need to run specify every time I open my project?"
+### "Do I need to run writekit every time I open my project?"
 
-**Short answer:** No, you only run `specify init` once per project (or when upgrading).
+**Short answer:** No, you only run `writekit init` once per project (or when upgrading).
 
 **Explanation:**
 
-The `specify` CLI tool is used for:
+The `writekit` CLI tool is used for:
 
-- **Initial setup:** `specify init` to bootstrap Spec Kit in your project
-- **Upgrades:** `specify init --here --force` to update templates and commands
-- **Diagnostics:** `specify check` to verify tool installation
+- **Initial setup:** `writekit init` to bootstrap Spec Kit in your project
+- **Upgrades:** `writekit init --here --force` to update templates and commands
+- **Diagnostics:** `writekit check` to verify tool installation
 
-Once you've run `specify init`, the slash commands (like `/speckit.specify`, `/speckit.plan`, etc.) are **permanently installed** in your project's agent folder (`.claude/`, `.github/prompts/`, etc.). Your AI assistant reads these command files directly—no need to run `specify` again.
+Once you've run `writekit init`, the slash commands (like `/writekit.specify`, `/writekit.plan`, etc.) are **permanently installed** in your project's agent folder (`.claude/`, `.github/prompts/`, etc.). Your AI assistant reads these command files directly—no need to run `writekit` again.
 
 **If your agent isn't recognizing slash commands:**
 
@@ -414,7 +414,7 @@ Once you've run `specify init`, the slash commands (like `/speckit.specify`, `/s
 
 2. **Restart your IDE/editor completely** (not just reload window)
 
-3. **Check you're in the correct directory** where you ran `specify init`
+3. **Check you're in the correct directory** where you ran `writekit init`
 
 4. **For some agents**, you may need to reload the workspace or clear cache
 
@@ -438,7 +438,7 @@ Spec Kit follows semantic versioning for major releases. The CLI and project fil
 
 After upgrading:
 
-- **Test new slash commands:** Run `/speckit.constitution` or another command to verify everything works
-- **Review release notes:** Check [GitHub Releases](https://github.com/github/spec-kit/releases) for new features and breaking changes
+- **Test new slash commands:** Run `/writekit.constitution` or another command to verify everything works
+- **Review release notes:** Check [GitHub Releases](https://github.com/hskksk/spec-writing-kit/releases) for new features and breaking changes
 - **Update workflows:** If new commands were added, update your team's development workflows
-- **Check documentation:** Visit [github.io/spec-kit](https://github.github.io/spec-kit/) for updated guides
+- **Check documentation:** Visit [hskksk.github.io/spec-writing-kit](https://hskksk.github.io/spec-writing-kit/) for updated guides
