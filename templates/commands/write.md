@@ -38,7 +38,7 @@ Follow this execution flow:
 
 4.  **Output**: Write the completed content to `/specs/[FEATURE_NUMBER]-[CONTENT_SLUG]/[CONTENT_SLUG].md` or a similar appropriate output file based on the content type.
 
-## Output Format:
+## Output Format
 
 Please provide the final content in Markdown format, ready for publication. Ensure all specified requirements from the constitution, specification, plan, and tasks are met.
 
